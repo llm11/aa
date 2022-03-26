@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button-j></button-j>
+    </div>
+    <template id="temp">
+        <div>
+            <button @click="add">+</button>
+            {{count}} 
+            <button @click="jian">-</button>
+        </div>
+    </template>
+</body>
+
+<script>
+    Vue.component('button-j', {
+
+        data: function() {
+            return {
+                count: 0
+            }
+        },
+        methods: {
+            add() {
+                this.count++
+            },
+            jian() {
+                this.count--;
+                this.count == 0 && (this.count = 1)
+            }
+        },
+        // template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+        template: '#temp',
+    })
+    new Vue({
+        el: '#app',
+        data: {},
+
+
+    })
+</script>
+
+</html>
